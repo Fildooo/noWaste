@@ -8,6 +8,7 @@ public class Panier{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false, length = 20)
@@ -19,9 +20,9 @@ public class Panier{
     @Column(name = "description", nullable = false, length = 100)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "commercant_id")
-    private Commercant commercant;
+  //  @ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "commercant_id")
+   // private Commercant commercant;
     // getters and setters are not shown
 
 
@@ -56,7 +57,7 @@ public class Panier{
     public void setDescription(String description) {
         this.description = description;
     }
-
+/**
     public Commercant getCommercant() {
         return commercant;
     }
@@ -64,4 +65,5 @@ public class Panier{
     public void setCommercant(Commercant commercant) {
         this.commercant = commercant;
     }
+ **/
 }

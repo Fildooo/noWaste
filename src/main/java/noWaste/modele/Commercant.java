@@ -16,6 +16,7 @@ public class Commercant {
     @Column(name = "localisation", nullable = false, length = 20)
     private String localisation;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "commercant")
-    private List<Panier> paniers;
+
+    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "commercant")
+    //private List<Panier> paniers;
 }
