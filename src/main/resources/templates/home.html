@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>noWaste16</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+  <div>
+    <form th:action="@{/logout}" method="post">
+      <p>
+        Bienvenue <b>[[${#request.userPrincipal.principal.fullName}]]</b> sur noWaste16
+      </p>
+      <input type="submit" value="Se deconnecter" />
+    </form>
+  </div>
+  <div>
+    <h1>Liste des paniers disponibles</h1>
+  </div>
+
+  <div>
+
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Stock</th>
+      </tr>
+      </thead>
+
+
+      <tbody>
+      <tr th:each="panier: ${listPaniers}">
+        <td th:text="${panier.name}">Nom</td>
+        <td th:text="${panier.description}">Description</td>
+        <td th:text="${panier.stock}">Stock</td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+</body>
+</html>
