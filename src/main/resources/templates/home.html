@@ -1,22 +1,96 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="fr">
+
+<style>
+  .carousel-item h1 {
+    position: absolute;
+    margin: 0;
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
 <head>
-  <meta charset="ISO-8859-1">
+  <meta charset="utf-8">
+
   <title>noWaste16</title>
   <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
+<header>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <nav class="navbar-fixed-top navbar-expand-lg navbar-light bg-light shadow-lg p-3 bg-white rounded">
+    <a class="navbar-brand text-success" href="/home">NoWaste</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-success" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="#liste">Liste produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="#">Espace commercant</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="#">Espace admin</a>
+        </li>
+        <li>
+
+        </li>
+      </ul>
+      <form th:action="@{/logout}" method="post">
+        <input type="submit" class ="btn btn-success float-right" value="Se deconnecter" />
+        <p class="text-align-center float-right mr-auto p-2">
+          Bienvenue <b>[[${#request.userPrincipal.principal.fullName}]]</b> sur NoWaste
+        </p>
+      </form>
+    </div>
+  </nav>
+</header>
 <body>
-<div class="container text-center">
-  <div>
-    <form th:action="@{/logout}" method="post">
-      <p>
-        Bienvenue <b>[[${#request.userPrincipal.principal.fullName}]]</b> sur noWaste16
-      </p>
-      <input type="submit" value="Se deconnecter" />
-    </form>
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img/commande.jpg" alt="commande">
+      <div class="d-flex h-100 align-items-center justify-content-center">
+        <h1 clas="d-block w-100">Commandez facilement sur notre site</h1>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/livraison.jpg" alt="livraison">
+      <div class="d-flex h-100 align-items-center justify-content-center">
+        <h1 >R&eacute;cup&eacute;rer votre panier près de chez vous</h1>
+      </div>
+
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 " src="img/degustation.jpg" alt="degustation">
+      <div class="d-flex h-100 align-items-center justify-content-center">
+        <h1>D&eacute;gustez sans mod&eacute;ration !</h1>
+      </div>
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="container text-center">
+
   <div>
     <h1>Liste des paniers disponibles</h1>
   </div>
@@ -33,16 +107,151 @@
       </thead>
 
 
-      <tbody>
+      <tbody id="liste">
       <tr th:each="panier: ${listPaniers}">
-        <td th:text="${panier.name}">Nom</td>
-        <td th:text="${panier.description}">Description</td>
-        <td th:text="${panier.stock}">Stock</td>
+        <td class="shadow-lg p-3 mb-5 bg-white rounded" th:text="${panier.name}">Nom</td>
+        <td class="shadow-lg p-3 mb-5 bg-white rounded" th:text="${panier.description}">Description</td>
+        <td class="shadow-lg p-3 mb-5 bg-white rounded" th:text="${panier.stock}">Stock</td>
       </tr>
       </tbody>
+
 
     </table>
   </div>
 </div>
 </body>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+          class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Suivez nous sur nos r&eacute;seaux sociaux !</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>NoWaste
+          </h6>
+          <p>
+            NoWaste est une companie anti-gaspillage. Celle-ci permet de commander des paniers repas &agrave; moindre cout qui se destinaient &agrave; ne pas être consomm&eacute;. Gr&acirc;ce &agrave; cette d&eacute;marche, nous r&eacute;duisons le nombre de gaspillage alimentaire.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            D&eacute;veloppeurs
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Cherbonnier Mathis</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Crochet Hugo</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Jouannot Quentin</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Liens utiles
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Prix</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Parametres</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Commandes</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Aide</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Tours, France</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            service-info@nowaste.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 06 43 54 65 76</p>
+          <p><i class="fas fa-print me-3"></i> + 06 53 66 77 43</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="#">NoWaste.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </html>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
