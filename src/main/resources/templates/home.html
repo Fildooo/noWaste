@@ -68,7 +68,7 @@
     <div class="carousel-item">
       <img class="d-block w-100" src="img/livraison.jpg" alt="livraison">
       <div class="d-flex h-100 align-items-center justify-content-center">
-        <h1 >R&eacute;cup&eacute;rer votre panier pr?s de chez vous</h1>
+        <h1 >R&eacute;cup&eacute;rez votre panier pr&egrave;s de chez vous</h1>
       </div>
 
     </div>
@@ -91,7 +91,7 @@
 
 <div class="container text-center">
 
-  <div>
+  <div id="liste">
     <h1>Liste des paniers disponibles</h1>
   </div>
 
@@ -108,12 +108,12 @@
       </thead>
 
 
-      <tbody id="liste">
+      <tbody>
       <tr class="shadow-lg p-3 mb-5 bg-white rounded" th:each="panier: ${listPaniers}">
         <td class="shadow-lg p-3 mb-5 bg-white rounded" th:text="${panier.name}">Nom</td>
         <td class="shadow-lg p-3 mb-5 bg-white rounded" th:text="${panier.description}">Description</td>
         <td class="shadow-lg p-3 mb-5 bg-white rounded" th:text="${panier.stock}">Stock</td>
-        <td><a th:href="@{/process_reservation}"><button class="btn btn-primary">Commande ce panier</button></a>
+        <td><a th:href="@{/process_reservation}"><button class="btn btn-success">Commande ce panier</button></a>
         </td>
       </tr>
       </tbody>

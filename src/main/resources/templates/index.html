@@ -2,17 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>noWaste16</title>
+    <title>Connexion</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container text-center">
-    <h1>Bienvenue sur noWaste16</h1>
-    <h3><a th:href="@{/register}">S'inscrire</a></h3>
-    <h3><a th:href="@{/login}">Se connecter</a></h3>
-</div>
-
+<section class="vh-100 bg-image bt-5" style="background-image: url('/img/login2.jpg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3 pb-2">
+        <div class="container h-100 mt-5 mb-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6 mt-5">
+                    <div class="card mb-5" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                                <div class="m-3">
+                                    <h2>Bienvenue sur <span style="color: green;">noWaste16</span></h2>
+                                    <h3 style="margin-top: 20px; color: green;">
+                                        <a style="color: green;"th:href="@{/register}">S'inscrire</a>
+                                    </h3>
+                                    <h3><a style="color: green;"th:href="@{/login}">Se connecter</a></h3>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
+<style>
+    .form-control:focus {
+        border:2px solid #58512e;
+        box-shadow: 0 0 3px #58512e;
+    }
+    .btn{
+        border-style: none;
+        width: 100%;
+    }
+    a:hover{
+        color: #58512e;
+    }
+    .card{
+        border-left-style: none;
+        border-bottom-style: none;
+    }
+</style>
 </html>

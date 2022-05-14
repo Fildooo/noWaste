@@ -2,42 +2,66 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Inscription</title>
+    <title>Connexion</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container text-center">
-    <div>
-        <h1>Connectez-vous</h1>
-    </div>
-    <form th:action="@{/login}" th:object="${user}"
-          method="post" style="max-width: 600px; margin: 0 auto;">
-        <div class="m-3">
-            <div class="form-group row">
-                <label class="col-4 col-form-label">E-mail: </label>
-                <div class="col-8">
-                    <input type="email" th:field="*{email}" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus"
-                           required />
+<section class="vh-100 bg-image bt-5" style="background-image: url('/img/login2.jpg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3 pb-2">
+        <div class="container h-100 mt-5 mb-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6 mt-5">
+                    <div class="card mb-5" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h1 class="text-uppercase text-center mb-5" id="titre">Se connecter</h1>
+                            <form th:action="@{/login}" th:object="${user}"
+                                  method="post" style="max-width: 600px; margin: 0 auto;">
+                                <div class="m-3">
+                                    <div class="form-group row">
+                                        <label class="col-4 col-form-label">E-mail: </label>
+                                        <div class="col-8">
+                                            <input type="email" th:field="*{email}" class="form-control" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-4 col-form-label">Mot de passe: </label>
+                                        <div class="col-8">
+                                            <input type="password" th:field="*{password}" class="form-control"
+                                                   required minlength="6" maxlength="10"/>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" class="btn btn-success">Se connecter</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Mot de passe: </label>
-                <div class="col-8">
-                    <input type="password" th:field="*{password}" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus"
-
-                           required minlength="6" maxlength="10"/>
-                </div>
-            </div>
-
-
-            <div>
-                <button type="submit" class="btn btn-success">Se connecter</button>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</section>
 </body>
+<style>
+    .form-control:focus {
+        border:2px solid #58512e;
+        box-shadow: 0 0 3px #58512e;
+    }
+    .btn{
+        border-style: none;
+        width: 100%;
+    }
+    a:hover{
+        color: #58512e;
+    }
+    .card{
+        border-left-style: none;
+        border-bottom-style: none;
+    }
+</style>
 </html>
