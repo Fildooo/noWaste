@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.List;
@@ -35,11 +36,25 @@ public class AppController {
         return "index";
     }
 
+    @GetMapping("/espace_co")
+    public String espaceCo(Model model) {
+        List<Panier> listPaniers = panierRepo.findAll();
+        model.addAttribute("listPaniers", listPaniers);
+        return "espace_co";
+    }
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
 
         return "signup_form";
+    }
+
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", new User());
+
+        return "login";
     }
 
     @GetMapping("/addpanier")
@@ -54,6 +69,14 @@ public class AppController {
         panierRepo.save(panier);
 
         return "panier_success";
+    }
+
+    @RequestMapping("/process_reservation")
+    public String processReservation(User user, Panier panier) {
+        panier.setUser(user);
+        panierRepo.save(panier);
+
+        return "reservation_success";
     }
 
     @PostMapping("/process_register")

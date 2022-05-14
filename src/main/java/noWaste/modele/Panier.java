@@ -20,11 +20,9 @@ public class Panier{
     @Column(name = "description", nullable = false, length = 100)
     private String description;
 
-  //  @ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "commercant_id")
-   // private Commercant commercant;
-    // getters and setters are not shown
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Long getId() {
         return id;
@@ -57,13 +55,12 @@ public class Panier{
     public void setDescription(String description) {
         this.description = description;
     }
-/**
-    public Commercant getCommercant() {
-        return commercant;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setCommercant(Commercant commercant) {
-        this.commercant = commercant;
+    public void setUser(User user) {
+        this.user = user;
     }
- **/
 }

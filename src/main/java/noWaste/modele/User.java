@@ -1,6 +1,7 @@
 package noWaste.modele;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +25,8 @@ public class User {
 
     // getters and setters are not shown
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Panier> paniers;
 
     public Long getId() {
         return id;
@@ -63,5 +66,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Panier> getPaniers() {
+        return paniers;
+    }
+
+    public void setPaniers(List<Panier> paniers) {
+        this.paniers = paniers;
     }
 }
