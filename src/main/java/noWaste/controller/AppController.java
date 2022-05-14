@@ -22,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Controller
-public class AppController  extends WebMvcConfigurerAdapter {
+public class AppController {
 
     @Autowired
     private UserRepository userRepo;
@@ -40,6 +40,20 @@ public class AppController  extends WebMvcConfigurerAdapter {
         model.addAttribute("user", new User());
 
         return "signup_form";
+    }
+
+    @GetMapping("/addpanier")
+    public String showAddpanierForm(Model model) {
+        model.addAttribute("panier", new Panier());
+        return "addpanier";
+    }
+
+    @PostMapping("/process_panier")
+    public String processPanier(Panier panier) {
+
+        panierRepo.save(panier);
+
+        return "panier_success";
     }
 
     @PostMapping("/process_register")

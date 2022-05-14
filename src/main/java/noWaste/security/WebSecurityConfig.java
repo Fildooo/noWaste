@@ -48,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/home").authenticated()
+                .antMatchers("/addpanier").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
@@ -57,6 +58,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }
-
-
 }
